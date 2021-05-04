@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/transaction_item_category"
+        android:layout_width="0dp"
+        android:layout_weight=".50"
+        android:layout_height="50dp"
+        android:gravity="center"
+        tools:ignore="Suspicious0dp" />
+
+    <TextView
+        android:id="@+id/transaction_item_monto"
+        android:layout_width="0dp"
+        android:layout_weight=".40"
+        android:gravity="center"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/transaction_item_mes"
+        android:layout_width="0dp"
+        android:layout_weight=".30"
+        android:gravity="center"
+        android:layout_height="50dp" />
+
+    <ImageButton
+        android:id="@+id/delete_button"
+        android:layout_width="0dp"
+        android:layout_weight=".25"
+        android:layout_height="50dp"
+        android:contentDescription="@string/eliminar"
+        android:src="@drawable/ic_baseline_delete_24"/>
+
+</LinearLayout>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ingresos.IngresosFragment">
+
+
+    <TextView
+        android:id="@+id/ingresos_main_textView"
+        android:layout_width="120dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:text="@string/menu_ingresos"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.17" />
+
+    <ImageView
+        android:id="@+id/ingresos_image"
+        android:layout_width="120dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_income"
+        app:layout_constraintBottom_toTopOf="@+id/ingresos_main_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ingresar_monto_textView"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/ingresos_monto"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/ingresar_monto_editText"
+        app:layout_constraintEnd_toStartOf="@+id/ingresar_monto_editText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ingresar_monto_editText"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ingresar_monto_textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257" />
+
+    <TextView
+        android:id="@+id/ingresar_categoria_txt"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:gravity="left|center_vertical"
+        android:text="@string/ingresos_categoria"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/ingresos_categoria_spinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingresar_monto_textView" />
+
+    <Spinner
+        android:id="@+id/ingresos_categoria_spinner"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/ingresos_dia_editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ingresar_categoria_txt"
+        app:layout_constraintTop_toBottomOf="@+id/ingresar_monto_editText"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <TextView
+        android:id="@+id/ingresar_detalle_textView"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="left"
+        android:text="@string/ingresos_detalles"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/ingresos_detalles_editTextMulti"
+        app:layout_constraintEnd_toStartOf="@+id/ingresos_detalles_editTextMulti"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/ingresos_detalles_editTextMulti"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/ingresos_dia_editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ingresar_detalle_textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.874" />
+
+    <EditText
+        android:id="@+id/ingresos_dia_editText"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ingresar_dia"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.599" />
+
+    <TextView
+        android:id="@+id/ingresar_anio"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="104dp"
+        android:gravity="center"
+        android:text="@string/ingresos_anio"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ingresos_anio_spinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/ingresos_mes_spinner"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/ingresos_anio_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ingresar_mes"
+        app:layout_constraintTop_toBottomOf="@+id/ingresos_dia_editText"
+        app:layout_constraintVertical_bias="0.476" />
+    
+    <Spinner
+        android:id="@+id/ingresos_anio_spinner"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="104dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ingresar_anio" />
+
+
+
+    <TextView
+        android:id="@+id/ingresar_dia"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:gravity="left|center"
+        android:layout_marginLeft="8dp"
+        android:text="@string/ingresos_dia"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/ingresos_dia_editText"
+        app:layout_constraintEnd_toStartOf="@+id/ingresos_dia_editText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ingresar_mes"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/ingresos_mes"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/ingresar_anio"
+        app:layout_constraintEnd_toStartOf="@+id/ingresos_mes_spinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingresar_dia"
+        app:layout_constraintVertical_bias="0.469" />
+
+
+    <Button
+        android:id="@+id/ingresar_registro_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/ingresos_ingresar_registro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,85 @@
+package com.carlos.ahorromatic.ui.historial
+
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.carlos.ahorromatic.R
+import com.carlos.ahorromatic.db.entities.GastoEntity
+import com.carlos.ahorromatic.db.entities.IngresoEntity
+
+
+class HistorialAdapter(onDeleteClickListener: OnDeleteClickListener) : ListAdapter<IngresoEntity, HistorialAdapter.MyViewHolder>(AlumnoComparator()) {
+
+    private val mOnDeleteClickListener = onDeleteClickListener
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        return MyViewHolder.create(parent, mOnDeleteClickListener)
+    }
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val current = getItem(position)
+        holder.bind(current)
+    }
+
+    class MyViewHolder(itemView: View, onDeleteClickListener: OnDeleteClickListener) : RecyclerView.ViewHolder(itemView) {
+        private val onDeleteClickListener = onDeleteClickListener
+        private val categoria:TextView = itemView.findViewById(R.id.transaction_item_category)
+        private val monto: TextView = itemView.findViewById(R.id.transaction_item_monto)
+        private val mes: TextView = itemView.findViewById(R.id.transaction_item_mes)
+        private val deleteButton: ImageButton = itemView.findViewById(R.id.delete_button)
+
+        fun bind(ingreso: IngresoEntity) {
+            System.out.println(ingreso)
+            categoria.text = ingreso.categoria
+            monto.text = ingreso.monto.toString()
+            mes.text = getMonthName(ingreso.mes)
+
+            deleteButton.setOnClickListener {
+                onDeleteClickListener.onDeleteIngreso(ingreso)
+            }
+        }
+
+        companion object {
+            fun create(parent: ViewGroup, onDeleteClickListener: OnDeleteClickListener):
+                    MyViewHolder {
+                val view: View = LayoutInflater.from(parent.context)
+                        .inflate(R.layout.recycler_transaction_item, parent, false)
+                return MyViewHolder(view, onDeleteClickListener)
+            }
+        }
+
+        private fun getMonthName(position:Int): String{
+            val lista:List<String> = listOf("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
+            val mes = lista[position-1]
+            return mes
+        }
+
+
+    }
+
+    class AlumnoComparator : DiffUtil.ItemCallback<IngresoEntity>() {
+        override fun areItemsTheSame(oldItem: IngresoEntity, newItem: IngresoEntity): Boolean {
+            return oldItem === newItem
+        }
+        override fun areContentsTheSame(oldItem: IngresoEntity, newItem: IngresoEntity):
+                Boolean {
+            return oldItem.id == newItem.id
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return 0
+    }
+
+    interface OnDeleteClickListener {
+        fun onDeleteIngreso(ingreso: IngresoEntity)
+        //fun onDeleteGasto(gasto: GastoEntity)
+    }
+
+
+}

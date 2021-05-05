@@ -1,4 +1,4 @@
-package com.carlos.ahorromatic.ui
+package com.carlos.ahorromatic.ui.inicio
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -10,13 +10,13 @@ import android.widget.ImageButton
 import androidx.navigation.fragment.findNavController
 import com.carlos.ahorromatic.R
 
-class inicioFragment : Fragment() {
+class InicioFragment : Fragment() {
 
     companion object {
-        fun newInstance() = inicioFragment()
+        fun newInstance() = InicioFragment()
     }
 
-    private lateinit var viewModel: inicioViewModel
+    private lateinit var viewModel: InicioViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -25,7 +25,7 @@ class inicioFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(inicioViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(InicioViewModel::class.java)
         val ingresoButtonRedirect = view?.findViewById<ImageButton>(R.id.ingreso_btn)
         ingresoButtonRedirect?.setOnClickListener {
             findNavController().navigate(R.id.action_nav_inicio_to_nav_ingresos)

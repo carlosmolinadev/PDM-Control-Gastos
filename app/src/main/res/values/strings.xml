@@ -11,6 +11,8 @@
     <string name="menu_ingresos">Ingresos</string>
     <string name="menu_usuario">Usuarios</string>
     <string name="menu_historial">Historial</string>
+    <string name="menu_historial_ingresos">Historial Ingresos</string>
+    <string name="menu_historial_gastos">Historial Gastos</string>
 
     <string name="button_gastos">Gastos</string>
     <string name="button_ingresos">Ingresos</string>
@@ -22,6 +24,8 @@
     <string name="inicio_bienvenido">Bienvenido</string>
     <string name="inicio_registrar_ingreso">Registrar Ingreso</string>
     <string name="inicio_registrar_gastos">Registrar Gasto</string>
+    <string name="inicio_cuentas">Cuentas</string>
+    <string name="inicio_usuarios">Usuarios</string>
 
     <!--Ingresos Layout-->
     <string name="ingresos_monto">Ingresar Monto</string>
@@ -84,4 +88,14 @@
         <item>Sueldo</item>
         <item>Ventas</item>
     </string-array>
+
+    <!--Historial Layout-->
+    <string name="historial_ahorro_acumulado">Ahorro Acumulado</string>
+    <string name="historial_ingresos">Total de ingresos</string>
+    <string name="historial_gastos">Total de ingresos</string>
+    <string name="historial_ver_registro_gastos">Ver historial de gastos</string>
+    <string name="historial_ver_registro_ingresos">Ver historial de ingresos</string>
+    <string name="historial_cuentas">Cuentas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

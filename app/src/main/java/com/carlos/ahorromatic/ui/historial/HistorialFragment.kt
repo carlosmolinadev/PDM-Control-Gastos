@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carlos.ahorromatic.R
@@ -15,7 +18,7 @@ import com.carlos.ahorromatic.RegistroApplication
 import com.carlos.ahorromatic.db.entities.GastoEntity
 import com.carlos.ahorromatic.db.entities.IngresoEntity
 
-class HistorialFragment : Fragment(), HistorialAdapter.OnDeleteClickListener {
+class HistorialFragment : Fragment() {
     companion object {
         fun newInstance() = HistorialFragment()
     }
@@ -37,34 +40,17 @@ class HistorialFragment : Fragment(), HistorialAdapter.OnDeleteClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Recycler View
-        val adapter = HistorialAdapter(this)
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerview)
-        recyclerView?.adapter = adapter
-        recyclerView?.layoutManager = LinearLayoutManager(context)
+        val historialButtonRedirect = view?.findViewById<Button>(R.id.historial_to_ingresos_btn)
+        historialButtonRedirect?.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_historial_to_nav_historial_ingresos)
+        }
 
-        // HistoryModel
-        viewModel.ingresos.observe(viewLifecycleOwner, Observer { ingresos ->
-            ingresos?.let { adapter.submitList(it) }
-        })
+        val historialGastos = view?.findViewById<Button>(R.id.historial_to_gastos_btn)
+        historialGastos?.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_historial_to_nav_historial_gastos)
+        }
         
     }
 
-    override fun onDeleteIngreso(ingreso: IngresoEntity) {
-        val builder = AlertDialog.Builder(activity)
-        builder.setMessage("Estas seguro que deseas borrar el registro?").setCancelable(false).setPositiveButton("Si")
-        { dialog, id ->
-            viewModel.deleteIngreso(ingreso)
-        }
-                .setNegativeButton("No") { dialog, id ->
-                    dialog.dismiss()
-                }
-        val alert = builder.create()
-        alert.show()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 
 }

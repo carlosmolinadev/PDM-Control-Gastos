@@ -11,11 +11,7 @@
         android:label="@string/menu_usuario"
         tools:layout="@layout/usuario_fragment" />
 
-    <fragment
-        android:id="@+id/nav_historial"
-        android:name="com.carlos.ahorromatic.ui.historial.HistorialFragment"
-        android:label="@string/menu_historial"
-        tools:layout="@layout/historial_fragment" />
+
 
     <fragment
         android:id="@+id/nav_gastos"
@@ -31,7 +27,7 @@
 
     <fragment
         android:id="@+id/nav_inicio"
-        android:name="com.carlos.ahorromatic.ui.inicioFragment"
+        android:name="com.carlos.ahorromatic.ui.inicio.InicioFragment"
         android:label="@string/nav_inicio"
         tools:layout="@layout/inicio_fragment" >
         <action
@@ -47,4 +43,30 @@
             android:id="@+id/action_nav_inicio_to_nav_usuario"
             app:destination="@id/nav_usuario" />
     </fragment>
+
+    <fragment
+        android:id="@+id/nav_historial"
+        android:name="com.carlos.ahorromatic.ui.historial.HistorialFragment"
+        android:label="@string/menu_historial"
+        tools:layout="@layout/historial_fragment" >
+        <action
+            android:id="@+id/action_nav_historial_to_nav_historial_ingresos"
+            app:destination="@id/nav_historial_ingresos" />
+        <action
+            android:id="@+id/action_nav_historial_to_nav_historial_gastos"
+            app:destination="@id/nav_historial_gastos" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_historial_ingresos"
+        android:name="com.carlos.ahorromatic.ui.historial.HistorialIngresosFragment"
+        android:label="@string/menu_ingresos"
+        tools:layout="@layout/fragment_historial_ingresos" />
+
+    <fragment
+        android:id="@+id/nav_historial_gastos"
+        android:name="com.carlos.ahorromatic.ui.historial.HistorialGastosFragment"
+        android:label="@string/menu_ingresos"
+        tools:layout="@layout/fragment_historial_gastos" />
 </navigation>

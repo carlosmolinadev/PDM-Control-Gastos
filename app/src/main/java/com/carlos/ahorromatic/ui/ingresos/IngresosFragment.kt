@@ -152,6 +152,7 @@ class IngresosFragment : Fragment() {
             viewModel.insert(IngresoEntity(
                 0, monto!!, categoria, dia, mes, anio, detalles, 1
             ))
+            Toast.makeText(requireContext(), "El registro ha sido ingresado exitosamente!", Toast.LENGTH_LONG).show()
             findNavController().navigateUp()
         }
     }

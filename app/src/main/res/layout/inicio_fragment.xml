@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.inicioFragment">
+    tools:context=".ui.inicio.InicioFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,10 +55,12 @@
             android:id="@+id/gastos_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:src="@drawable/ic_spending"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.883"
+            app:layout_constraintHorizontal_bias="0.895"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.194" />
@@ -67,6 +69,8 @@
             android:id="@+id/gastos_textView"
             android:layout_width="143dp"
             android:layout_height="60dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:gravity="center"
             android:text="@string/inicio_registrar_gastos"
             android:textSize="24sp"
@@ -86,10 +90,51 @@
             android:src="@drawable/ic_budget"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
+            app:layout_constraintHorizontal_bias="0.142"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bienvenido_textView"
             app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/cuentas_textView"
+            android:layout_width="143dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="@string/inicio_cuentas"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/historial_btn"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/usuarios_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="162dp"
+            android:src="@drawable/ic_users"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.865"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gastos_textView"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/usuarios_textView"
+            android:layout_width="143dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="@string/inicio_usuarios"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.869"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usuarios_btn"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

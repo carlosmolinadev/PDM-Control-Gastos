@@ -14,7 +14,7 @@ import com.carlos.ahorromatic.db.entities.GastoEntity
 import com.carlos.ahorromatic.db.entities.IngresoEntity
 
 
-class HistorialAdapter(onDeleteClickListener: OnDeleteClickListener) : ListAdapter<IngresoEntity, HistorialAdapter.MyViewHolder>(AlumnoComparator()) {
+class HistorialIngresosAdapter(onDeleteClickListener: OnDeleteClickListener) : ListAdapter<IngresoEntity, HistorialIngresosAdapter.MyViewHolder>(AlumnoComparator()) {
 
     private val mOnDeleteClickListener = onDeleteClickListener
 

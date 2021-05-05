@@ -2,15 +2,19 @@ package com.carlos.ahorromatic.ui.gastos
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.carlos.ahorromatic.R
 import com.carlos.ahorromatic.RegistroApplication
 import com.carlos.ahorromatic.db.entities.GastoEntity
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class GastosFragment : Fragment() {
 
@@ -42,7 +46,7 @@ class GastosFragment : Fragment() {
 
         // Elements from view
         val registrarButton: Button = requireView().findViewById(R.id.gastos_ingresar_registro_btn)
-        val montoEditText: EditText = requireView().findViewById(R.id.gastos_ingresar_monto_editText)
+        var montoEditText: EditText = requireView().findViewById(R.id.gastos_ingresar_monto_editText)
         val detallesEditText: EditText = requireView().findViewById(R.id.gastos_detalles_editTextMulti)
         val diaEditText: EditText = requireView().findViewById(R.id.gastos_ingresar_dia_editText)
 
@@ -132,7 +136,9 @@ class GastosFragment : Fragment() {
             }
         }
 
+
         registrarButton.setOnClickListener {
+
             if(montoEditText.text.isNullOrEmpty()){
                 Toast.makeText(requireContext(), "Favor ingresar monto", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -149,7 +155,7 @@ class GastosFragment : Fragment() {
                 GastoEntity(
                 0, monto!!, categoria, dia, mes, anio, detalles, 1)
             )
-            findNavController().navigateUp()
+            //findNavController().navigateUp()
         }
     }
 

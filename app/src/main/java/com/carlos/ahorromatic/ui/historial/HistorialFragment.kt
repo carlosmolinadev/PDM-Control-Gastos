@@ -47,6 +47,7 @@ class HistorialFragment : Fragment(), HistorialAdapter.OnDeleteClickListener {
         viewModel.ingresos.observe(viewLifecycleOwner, Observer { ingresos ->
             ingresos?.let { adapter.submitList(it) }
         })
+        
     }
 
     override fun onDeleteIngreso(ingreso: IngresoEntity) {

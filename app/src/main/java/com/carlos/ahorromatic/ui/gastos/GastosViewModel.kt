@@ -10,6 +10,9 @@ import kotlinx.coroutines.launch
 
 class GastosViewModel(private val repository: RegistroRepository) : ViewModel() {
     val gastos: LiveData<List<GastoEntity>> = repository.gastos
+
+    val total: LiveData<Double> = repository.total
+
     fun insert(gasto: GastoEntity) = viewModelScope.launch {
         repository.insert(gasto)
     }
@@ -18,6 +21,9 @@ class GastosViewModel(private val repository: RegistroRepository) : ViewModel() 
     }
     fun delete(gasto: GastoEntity) = viewModelScope.launch {
         repository.delete(gasto)
+    }
+    fun getExpenseById(id:Int) = viewModelScope.launch {
+        repository.getExpenseById(id)
     }
 }
 

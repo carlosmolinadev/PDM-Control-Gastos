@@ -34,7 +34,6 @@ class HistorialAdapter(onDeleteClickListener: OnDeleteClickListener) : ListAdapt
         private val deleteButton: ImageButton = itemView.findViewById(R.id.delete_button)
 
         fun bind(ingreso: IngresoEntity) {
-            System.out.println(ingreso)
             categoria.text = ingreso.categoria
             monto.text = ingreso.monto.toString()
             mes.text = getMonthName(ingreso.mes)

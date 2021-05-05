@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.navigation.fragment.findNavController
 import com.carlos.ahorromatic.R
+import com.carlos.ahorromatic.RegistroApplication
+import com.carlos.ahorromatic.db.entities.UsuarioEntity
 
 class InicioFragment : Fragment() {
 
@@ -20,6 +22,8 @@ class InicioFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        val currentUser = activity?.application as RegistroApplication
+        currentUser.setCurrentUser(UsuarioEntity(1, "Carlos", "Molina"))
         return inflater.inflate(R.layout.inicio_fragment, container, false)
     }
 

@@ -30,6 +30,7 @@ class HistorialIngresosAdapter(onDeleteClickListener: OnDeleteClickListener) : L
         private val onDeleteClickListener = onDeleteClickListener
         private val categoria:TextView = itemView.findViewById(R.id.transaction_item_category)
         private val monto: TextView = itemView.findViewById(R.id.transaction_item_monto)
+        private val dia: TextView = itemView.findViewById(R.id.transaction_item_dia)
         private val mes: TextView = itemView.findViewById(R.id.transaction_item_mes)
         private val deleteButton: ImageButton = itemView.findViewById(R.id.delete_button)
 
@@ -37,6 +38,7 @@ class HistorialIngresosAdapter(onDeleteClickListener: OnDeleteClickListener) : L
             categoria.text = ingreso.categoria
             monto.text = ingreso.monto.toString()
             mes.text = getMonthName(ingreso.mes)
+            dia.text = ingreso.dia.toString()
 
             deleteButton.setOnClickListener {
                 onDeleteClickListener.onDeleteIngreso(ingreso)

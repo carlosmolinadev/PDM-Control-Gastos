@@ -18,7 +18,7 @@ import java.util.*
             IngresoEntity::class,
             LogroEntity::class,
         ],
-        version = 1,
+        version = 2,
         exportSchema = false
 )
 
@@ -95,7 +95,7 @@ abstract class RegistroDB : RoomDatabase() {
                         context.applicationContext,
                         RegistroDB::class.java,
                         "registro_db"
-                ).addCallback(DBCallback(scope)).build()
+                ).fallbackToDestructiveMigration().addCallback(DBCallback(scope)).build()
                 INSTANCE = instance
                 instance
             }

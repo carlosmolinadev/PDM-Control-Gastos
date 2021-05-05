@@ -5,36 +5,33 @@
     android:layout_height="wrap_content" >
 
     <TextView
-        android:id="@+id/transaction_item_category"
+        android:id="@+id/usuario_item_name"
         android:layout_width="0dp"
-        android:layout_weight=".50"
+        android:layout_weight=".90"
         android:layout_height="50dp"
         android:gravity="center"
         tools:ignore="Suspicious0dp" />
 
-    <TextView
-        android:id="@+id/transaction_item_monto"
-        android:layout_width="0dp"
-        android:layout_weight=".40"
-        android:gravity="center"
-        android:layout_height="50dp" />
-
-    <TextView
-        android:id="@+id/transaction_item_dia"
-        android:layout_width="0dp"
-        android:layout_weight=".30"
-        android:gravity="center"
-        android:layout_height="50dp" />
-
-    <TextView
-        android:id="@+id/transaction_item_mes"
-        android:layout_width="0dp"
-        android:layout_weight=".30"
-        android:gravity="center"
-        android:layout_height="50dp" />
 
     <ImageButton
-        android:id="@+id/delete_button"
+        android:id="@+id/usuario_select_button"
+        android:layout_width="0dp"
+        android:layout_weight=".25"
+        android:layout_height="50dp"
+        android:contentDescription="seleccionar"
+        android:src="@drawable/ic_baseline_select_user"/>
+
+
+    <ImageButton
+        android:id="@+id/usuario_edit_button"
+        android:layout_width="0dp"
+        android:layout_weight=".25"
+        android:layout_height="50dp"
+        android:contentDescription="editar"
+        android:src="@drawable/ic_baseline_edit_24"/>
+
+    <ImageButton
+        android:id="@+id/usuario_delete_button"
         android:layout_width="0dp"
         android:layout_weight=".25"
         android:layout_height="50dp"

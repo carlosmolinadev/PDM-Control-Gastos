@@ -11,8 +11,8 @@ interface GastoDao {
     @Query("SELECT * FROM gasto WHERE usuario_id = :id")
     fun getExpenseByUserId(id:Int): LiveData<List<GastoEntity>>
 
-    @Query("SELECT SUM(monto) FROM Gasto WHERE usuario_id = :id")
-    fun getExpenseTotal(id:Int): LiveData<Double>
+    @Query("SELECT SUM(monto) FROM gasto WHERE usuario_id = :id AND mes = :mes")
+    fun getExpenseTotal(id:Int, mes:Int): LiveData<Double>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(gasto: GastoEntity)

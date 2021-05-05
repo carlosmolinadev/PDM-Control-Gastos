@@ -13,7 +13,7 @@ import com.carlos.ahorromatic.R
 import com.carlos.ahorromatic.db.entities.GastoEntity
 
 
-class HistorialGastosAdapter(onDeleteClickListener: OnDeleteClickListener) : ListAdapter<GastoEntity, HistorialGastosAdapter.MyViewHolder>(AlumnoComparator()) {
+class HistorialGastosAdapter(onDeleteClickListener: OnDeleteClickListener) : ListAdapter<GastoEntity, HistorialGastosAdapter.MyViewHolder>(GastoComparator()) {
 
     private val mOnDeleteClickListener = onDeleteClickListener
 
@@ -29,6 +29,7 @@ class HistorialGastosAdapter(onDeleteClickListener: OnDeleteClickListener) : Lis
         private val onDeleteClickListener = onDeleteClickListener
         private val categoria:TextView = itemView.findViewById(R.id.transaction_item_category)
         private val monto: TextView = itemView.findViewById(R.id.transaction_item_monto)
+        private val dia: TextView = itemView.findViewById(R.id.transaction_item_dia)
         private val mes: TextView = itemView.findViewById(R.id.transaction_item_mes)
         private val deleteButton: ImageButton = itemView.findViewById(R.id.delete_button)
 
@@ -36,6 +37,7 @@ class HistorialGastosAdapter(onDeleteClickListener: OnDeleteClickListener) : Lis
             categoria.text = gastos.categoria
             monto.text = gastos.monto.toString()
             mes.text = getMonthName(gastos.mes)
+            dia.text = gastos.dia.toString()
 
             deleteButton.setOnClickListener {
                 onDeleteClickListener.onDeleteGasto(gastos)
@@ -60,7 +62,7 @@ class HistorialGastosAdapter(onDeleteClickListener: OnDeleteClickListener) : Lis
 
     }
 
-    class AlumnoComparator : DiffUtil.ItemCallback<GastoEntity>() {
+    class GastoComparator : DiffUtil.ItemCallback<GastoEntity>() {
         override fun areItemsTheSame(oldItem: GastoEntity, newItem: GastoEntity): Boolean {
             return oldItem === newItem
         }
@@ -77,6 +79,4 @@ class HistorialGastosAdapter(onDeleteClickListener: OnDeleteClickListener) : Lis
     interface OnDeleteClickListener {
         fun onDeleteGasto(gasto: GastoEntity)
     }
-
-
 }

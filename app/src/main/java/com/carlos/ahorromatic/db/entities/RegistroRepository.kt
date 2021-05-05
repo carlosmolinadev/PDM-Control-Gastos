@@ -29,7 +29,10 @@ class RegistroRepository(private val db: RegistroDB) {
      ***************************/
     val gastos: LiveData<List<GastoEntity>> = db.gastoDao().getAll()
 
-    val total: LiveData<Double> = db.gastoDao().getExpenseTotal(1)
+    fun getTotalGastosByUser (id:Int, mes:Int): LiveData<Double>{
+        val totalGastos: LiveData<Double> = db.gastoDao().getExpenseTotal(id, mes)
+        return totalGastos
+    }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
@@ -46,21 +49,18 @@ class RegistroRepository(private val db: RegistroDB) {
     suspend fun delete(gasto: GastoEntity) {
         db.gastoDao().delete(gasto)
     }
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun getExpenseById(id: Int) {
-        db.gastoDao().getExpenseByUserId(id)
-    }
-    @Suppress("RedundantSuspendModifier")
-    @WorkerThread
-    suspend fun getExpenseTotal(id: Int):LiveData<Double> {
-        return db.gastoDao().getExpenseTotal(id)
-    }
 
     /***************************
      * Ingreso repository
      ***************************/
     val ingresos: LiveData<List<IngresoEntity>> = db.ingresoDao().getAll()
+
+    fun getTotalIngresosByUser (id:Int, mes:Int): LiveData<Double>{
+        val totalIngresos: LiveData<Double> = db.ingresoDao().getExpenseTotal(id, mes)
+        return totalIngresos
+    }
+
+
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(ingreso: IngresoEntity) {

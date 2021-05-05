@@ -13,6 +13,8 @@
     <string name="menu_historial">Historial</string>
     <string name="menu_historial_ingresos">Historial Ingresos</string>
     <string name="menu_historial_gastos">Historial Gastos</string>
+    <string name="menu_nuevo_ingreso">Registrar Ingreso</string>
+    <string name="menu_nuevo_gasto">Registrar Gasto</string>
 
     <string name="button_gastos">Gastos</string>
     <string name="button_ingresos">Ingresos</string>

@@ -20,8 +20,6 @@ data class LogroEntity(
         @PrimaryKey
         @ColumnInfo(name = "usuario_id")
         val usuario_id: Int,
-        @ColumnInfo(name = "ahorro_acumulado")
+        @ColumnInfo(name = "ahorro_mensual")
         val ahorroAcumulado: Double,
-        val ahorro :Double,
-        val objetivo: Double
 )

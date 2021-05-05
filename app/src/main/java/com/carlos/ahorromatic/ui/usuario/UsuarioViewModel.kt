@@ -7,10 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.carlos.ahorromatic.db.entities.RegistroRepository
 import com.carlos.ahorromatic.db.entities.UsuarioEntity
 import kotlinx.coroutines.launch
+import com.carlos.ahorromatic.RegistroApplication
 
 class UsuarioViewModel(private val repository: RegistroRepository) : ViewModel() {
     val usuarios: LiveData<List<UsuarioEntity>> = repository.usuarios
     var usuarioActual: UsuarioEntity? = null
+
+    fun setGlobalUser(usuario: UsuarioEntity){
+        RegistroApplication
+    }
     fun insert(usuario: UsuarioEntity) = viewModelScope.launch {
         repository.insert(usuario)
     }

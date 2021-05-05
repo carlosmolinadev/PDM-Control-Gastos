@@ -9,7 +9,14 @@ import kotlinx.coroutines.launch
 class HistorialViewModel(private val repository: RegistroRepository) : ViewModel() {
     val ingresos: LiveData<List<IngresoEntity>> = repository.ingresos
     val gastos: LiveData<List<GastoEntity>> = repository.gastos
-    val total: LiveData<Double> = repository.total
+
+    fun getTotalIngresosByUser(id:Int, mes:Int):LiveData<Double>{
+        return repository.getTotalIngresosByUser(id, mes)
+    }
+
+    fun getTotalGastosByUser(id:Int, mes:Int):LiveData<Double>{
+        return repository.getTotalGastosByUser(id, mes)
+    }
 
     fun deleteIngreso(ingreso: IngresoEntity) = viewModelScope.launch {
         repository.delete(ingreso)
@@ -17,6 +24,7 @@ class HistorialViewModel(private val repository: RegistroRepository) : ViewModel
     fun deleteGasto(gasto: GastoEntity) = viewModelScope.launch {
         repository.delete(gasto)
     }
+
 }
 
 class HistorialViewModelFactory(private val repository: RegistroRepository) :

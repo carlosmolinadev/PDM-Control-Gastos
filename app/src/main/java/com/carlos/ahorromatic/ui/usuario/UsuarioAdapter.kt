@@ -31,14 +31,14 @@ class UsuarioAdapter(adapterClickListener: AdapterClickListeners) : ListAdapter<
         private val deleteButton: ImageButton = itemView.findViewById(R.id.usuario_delete_button)
 
         fun bind(usuario: UsuarioEntity) {
+            System.out.println(usuario)
             usuarioField.text = "${usuario.apellido} ${usuario.nombre}"
-
             selectButton.setOnClickListener {
-                adapterClickListener.onDeleteUser(usuario)
+                adapterClickListener.onSelectUser(usuario)
             }
 
             updateButton.setOnClickListener {
-                adapterClickListener.onDeleteUser(usuario)
+                adapterClickListener.onEditUser(usuario)
             }
             
             deleteButton.setOnClickListener {
@@ -50,11 +50,10 @@ class UsuarioAdapter(adapterClickListener: AdapterClickListeners) : ListAdapter<
             fun create(parent: ViewGroup, AdapterClickListeners: AdapterClickListeners):
                     MyViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.recycler_transaction_item, parent, false)
+                    .inflate(R.layout.recycler_usuarios_item, parent, false)
                 return MyViewHolder(view, AdapterClickListeners)
             }
         }
-
     }
 
     class UserComparator : DiffUtil.ItemCallback<UsuarioEntity>() {

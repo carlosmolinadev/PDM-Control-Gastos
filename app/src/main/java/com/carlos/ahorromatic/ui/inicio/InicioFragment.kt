@@ -23,7 +23,7 @@ class InicioFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val currentUser = activity?.application as RegistroApplication
-        currentUser.setCurrentUser(UsuarioEntity(1, "Carlos", "Molina"))
+        currentUser.setCurrentUser(UsuarioEntity(1, "Carlos", "Molina", 0.0))
         return inflater.inflate(R.layout.inicio_fragment, container, false)
     }
 
@@ -43,6 +43,11 @@ class InicioFragment : Fragment() {
         val historialButtonRedirect = view?.findViewById<ImageButton>(R.id.historial_btn)
         historialButtonRedirect?.setOnClickListener {
             findNavController().navigate(R.id.action_nav_inicio_to_nav_historial)
+        }
+
+        val usuariosButtonRedirect = view?.findViewById<ImageButton>(R.id.usuarios_btn)
+        usuariosButtonRedirect?.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_inicio_to_nav_usuario)
         }
 
     }

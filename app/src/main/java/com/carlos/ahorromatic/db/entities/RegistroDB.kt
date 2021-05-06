@@ -18,7 +18,7 @@ import java.util.*
             IngresoEntity::class,
             LogroEntity::class,
         ],
-        version = 2,
+        version = 3,
         exportSchema = false
 )
 
@@ -63,7 +63,7 @@ abstract class RegistroDB : RoomDatabase() {
             val arrAnioG = listOf(2021, 2021)
 
             for (i in 0..1) {
-                db.usuarioDao().insert(UsuarioEntity(0, arrNombre[i], arrApellido[i]
+                db.usuarioDao().insert(UsuarioEntity(0, arrNombre[i], arrApellido[i],0.0
                 ))
             }
 

@@ -10,4 +10,5 @@ data class UsuarioEntity(
     val id: Int,
     val nombre: String,
     val apellido: String,
+    val ahorro: Double
 )

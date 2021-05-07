@@ -1,6 +1,7 @@
 package com.carlos.ahorromatic.ui.historial
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,6 +37,9 @@ class HistorialGastosFragment : Fragment(), HistorialGastosAdapter.OnDeleteClick
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val currentUser = sharedPref.getInt("currentUser", 1)
+
         //Recycler View
         val adapter = HistorialGastosAdapter(this)
         val recyclerView = view?.findViewById<RecyclerView>(R.id.gastos_recyclerview)
@@ -43,7 +47,7 @@ class HistorialGastosFragment : Fragment(), HistorialGastosAdapter.OnDeleteClick
         recyclerView?.layoutManager = LinearLayoutManager(context)
 
         // HistoryModel
-        viewModel.gastos.observe(viewLifecycleOwner, Observer { gastos ->
+        viewModel.getExpenseByUserId(currentUser, viewModel.mesSeleccionado).observe(viewLifecycleOwner, Observer { gastos ->
             gastos?.let { adapter.submitList(it) }
         })
 

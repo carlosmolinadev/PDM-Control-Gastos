@@ -1,5 +1,6 @@
 package com.carlos.ahorromatic.ui.historial
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,16 +35,15 @@ class HistorialFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var mes = 1
-        var gastosMensuales:Double? = null
-        var ingresosMensuales:Double = 0.0
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val currentUser = sharedPref.getInt("currentUser", 1)
+
         val mostrarAhorroAcumulado = view.findViewById<TextView>(R.id.historial_total_acumulado_resultado)
         val mostrarIngresoMensual = view.findViewById<TextView>(R.id.historial_ingresos_mensuales)
         val mostrarGastoMensual = view.findViewById<TextView>(R.id.historial_gastos_mensuales)
-        viewModel.getTotalIngresosByUser(1, 1).observe(viewLifecycleOwner, { ingresos -> mostrarIngresoMensual.text = ingresos?.toString()})
-        viewModel.getTotalGastosByUser(1, 1).observe(viewLifecycleOwner, { gastos -> gastos?.let { mostrarGastoMensual.text = it.toString() } })
-
-        val testButton = view.findViewById<Button>(R.id.button_test)
+        viewModel.getTotalIngresosByUser(currentUser, 1).observe(viewLifecycleOwner, { ingresos -> mostrarIngresoMensual.text = ingresos?.toString()})
+        viewModel.getTotalGastosByUser(currentUser, 1).observe(viewLifecycleOwner, { gastos -> gastos?.let { mostrarGastoMensual.text = it.toString() } })
+        viewModel.getAhorroAcumulado(currentUser).observe(viewLifecycleOwner, { ahorros -> ahorros?.let { mostrarAhorroAcumulado.text = it.toString() } })
 
         val seleccionarMesSpinner: Spinner = requireView().findViewById(R.id.seleccionar_mes_spinner)
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -65,8 +65,8 @@ class HistorialFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                mes = (position + 1)
-                viewModel.getTotalIngresosByUser(1, mes).observe(viewLifecycleOwner, { ingresos ->
+                viewModel.mesSeleccionado = (position + 1)
+                viewModel.getTotalIngresosByUser(currentUser, viewModel.mesSeleccionado).observe(viewLifecycleOwner, { ingresos ->
                     if(ingresos == null){
                         mostrarIngresoMensual.text = "0.00"
                     } else {
@@ -75,7 +75,7 @@ class HistorialFragment : Fragment() {
 
                 })
 
-                viewModel.getTotalGastosByUser(1, mes).observe(viewLifecycleOwner, { gastos ->
+                viewModel.getTotalGastosByUser(currentUser, viewModel.mesSeleccionado).observe(viewLifecycleOwner, { gastos ->
                     if(gastos == null){
                         mostrarGastoMensual.text = "0.00"
                     } else {
@@ -90,9 +90,6 @@ class HistorialFragment : Fragment() {
             }
         }
 
-        testButton.setOnClickListener {
-            viewModel.getTotalIngresosByUser(1, 4).observe(viewLifecycleOwner, { ingresos -> mostrarIngresoMensual.text = ingresos?.toString()})
-        }
 
         //mostrarAhorroAcumulado.text = it.toString()
         val historialButtonRedirect = view?.findViewById<Button>(R.id.historial_to_ingresos_btn)
@@ -108,3 +105,4 @@ class HistorialFragment : Fragment() {
     }
 
 }
+

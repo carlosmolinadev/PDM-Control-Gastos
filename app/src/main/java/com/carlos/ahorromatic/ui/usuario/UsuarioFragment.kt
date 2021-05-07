@@ -1,6 +1,8 @@
 package com.carlos.ahorromatic.ui.usuario
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -59,8 +61,11 @@ class UsuarioFragment : Fragment(), UsuarioAdapter.AdapterClickListeners {
     }
 
     override fun onSelectUser(usuario: UsuarioEntity) {
-        val currentUser = activity?.application as RegistroApplication
-        currentUser.setCurrentUser(usuario)
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putInt("currentUser", usuario.id)
+            apply()
+        }
         Toast.makeText(requireContext(), "Perfil del usuario ${usuario.nombre} ha sido cargado exitosamente!", Toast.LENGTH_LONG).show()
     }
 

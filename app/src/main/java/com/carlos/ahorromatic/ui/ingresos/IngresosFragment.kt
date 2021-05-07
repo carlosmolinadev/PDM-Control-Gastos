@@ -1,5 +1,6 @@
 package com.carlos.ahorromatic.ui.ingresos
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -34,6 +35,9 @@ class IngresosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val currentUser = sharedPref.getInt("currentUser", 1)
 
         // Variables that will be added to the database
         var monto:Double? = null
@@ -150,7 +154,7 @@ class IngresosFragment : Fragment() {
             dia = diaEditText.text.toString().toInt()
 
             viewModel.insert(IngresoEntity(
-                0, monto!!, categoria, dia, mes, anio, detalles, 1
+                0, monto!!, categoria, dia, mes, anio, detalles, currentUser
             ))
             Toast.makeText(requireContext(), "El registro ha sido ingresado exitosamente!", Toast.LENGTH_LONG).show()
             findNavController().navigateUp()

@@ -41,8 +41,8 @@ class RegistrarUsuarioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val currentUser = viewModel.usuarioActual
 
-        val nameField = view?.findViewById<EditText>(R.id.usuario_name_editText)
-        val lastNameField = view?.findViewById<EditText>(R.id.usuario_apellido_editText)
+        val nameField = view?.findViewById<EditText>(R.id.editTextTextPersonName)
+        val lastNameField = view?.findViewById<EditText>(R.id.editTextTextPersonNameLastName)
         val ahorroField = view?.findViewById<EditText>(R.id.editTextNumberDecimal)
         val registerButton = view?.findViewById<Button>(R.id.usuario_guardar_registro_btn)
 

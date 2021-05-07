@@ -34,6 +34,11 @@ class RegistroRepository(private val db: RegistroDB) {
         return totalGastos
     }
 
+    fun getExpenseByUserId (id:Int, mes:Int): LiveData<List<GastoEntity>>{
+        val historial: LiveData<List<GastoEntity>> = db.gastoDao().getExpenseByUserId(id, mes)
+        return historial
+    }
+
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insert(gasto: GastoEntity) {
@@ -60,6 +65,15 @@ class RegistroRepository(private val db: RegistroDB) {
         return totalIngresos
     }
 
+    fun getIngresosListByUserId (id:Int, mes:Int): LiveData<List<IngresoEntity>>{
+        val historial: LiveData<List<IngresoEntity>> = db.ingresoDao().getIngresosListByUserId(id, mes)
+        return historial
+    }
+
+    fun getAhorroAcumulado(id:Int):LiveData<Double>{
+        val totalIngresos: LiveData<Double> = db.ingresoDao().getAhorroAcumulado(id)
+        return totalIngresos
+    }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
